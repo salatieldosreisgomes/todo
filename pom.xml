@@ -8,7 +8,7 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.github.salatieldosreisgomes</groupId>
+	<groupId>io.github.salatieldosreisgomes.todo</groupId>
 	<artifactId>todo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>todo</name>
