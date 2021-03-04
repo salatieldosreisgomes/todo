@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { Todo } from './todo';
 import { TodoService } from './todo.service'
@@ -8,8 +8,18 @@ import { TodoService } from './todo.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   todos : Todo[] = []
+
+  ngOnInit(){
+    this.listar();
+  }
+
+  listar(){
+    this.service
+    .listar()
+    .subscribe(todoList => this.todos = todoList)
+  }
 
   form : FormGroup = new FormGroup({
     description : new FormControl('')
@@ -26,6 +36,15 @@ export class AppComponent {
       .subscribe(savedTodo => 
         {
           this.todos.push(savedTodo)
+          this.form.reset();
         })
+  }
+
+  delete(todo : Todo){
+    this.service
+    .delete(todo.id)
+    .subscribe({
+      next: (response) => this.listar()
+    })
   }
 }

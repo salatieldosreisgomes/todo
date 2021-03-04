@@ -17,4 +17,14 @@ export class TodoService {
   salvar(todo : Todo) : Observable<Todo> {
     return this.http.post<Todo>(this.apiUrl, todo)
   }
+
+  listar() : Observable<Todo[]>{
+    return this.http.get<Todo[]>(this.apiUrl)
+  }
+
+  delete(id: number) : Observable<void>{
+    const url = `${this.apiUrl}/${id}`
+    return this.http.delete<void>(url)
+  }
+  
 }
