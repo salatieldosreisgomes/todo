@@ -26,5 +26,10 @@ export class TodoService {
     const url = `${this.apiUrl}/${id}`
     return this.http.delete<void>(url)
   }
+
+  marcarComoConcluido(id: number) : Observable<Todo>{
+    const url = `${this.apiUrl}/${id}/done`
+    return this.http.patch<Todo>(url, {});
+  }
   
 }
