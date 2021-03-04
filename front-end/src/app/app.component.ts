@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Todo } from './todo';
 import { TodoService } from './todo.service'
 
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
   }
 
   form : FormGroup = new FormGroup({
-    description : new FormControl('')
+    description : new FormControl('', [Validators.required, Validators.minLength(4)])
   })
 
   constructor(
